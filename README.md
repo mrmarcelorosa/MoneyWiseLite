@@ -1,7 +1,5 @@
 # MoneyWiseLite
 
-# MoneyWise Lite
-
 MoneyWise Lite is a lightweight personal finance management system built with ASP.NET Core 9, React, and PostgreSQL. The project follows Clean Architecture principles and aims for clean, maintainable code.
 
 ## Features
