@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyWiseLite.Domain", "MoneyWiseLite.Domain\MoneyWiseLite.Domain.csproj", "{9B54B287-52C6-48A7-8070-DE25B1B1A070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyWiseLite.Application", "MoneyWiseLite.Application\MoneyWiseLite.Application.csproj", "{A6EBD195-135B-4E35-A5FD-3279E6314B29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyWiseLite.Infrastructure", "MoneyWiseLite.Infrastructure\MoneyWiseLite.Infrastructure.csproj", "{84AC8E21-E3FC-46B1-B2E4-4895A9F26E9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyWiseLite.API", "MoneyWiseLite.API\MoneyWiseLite.API.csproj", "{68FF5F04-4733-4363-B27E-61F87486B488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B54B287-52C6-48A7-8070-DE25B1B1A070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B54B287-52C6-48A7-8070-DE25B1B1A070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B54B287-52C6-48A7-8070-DE25B1B1A070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B54B287-52C6-48A7-8070-DE25B1B1A070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6EBD195-135B-4E35-A5FD-3279E6314B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EBD195-135B-4E35-A5FD-3279E6314B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EBD195-135B-4E35-A5FD-3279E6314B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EBD195-135B-4E35-A5FD-3279E6314B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84AC8E21-E3FC-46B1-B2E4-4895A9F26E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84AC8E21-E3FC-46B1-B2E4-4895A9F26E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84AC8E21-E3FC-46B1-B2E4-4895A9F26E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84AC8E21-E3FC-46B1-B2E4-4895A9F26E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68FF5F04-4733-4363-B27E-61F87486B488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68FF5F04-4733-4363-B27E-61F87486B488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68FF5F04-4733-4363-B27E-61F87486B488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68FF5F04-4733-4363-B27E-61F87486B488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
