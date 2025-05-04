@@ -11,12 +11,24 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Transaction> Transactions { get; set; }
-
+    //public DbSet<Transaction> Transactions { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            var clrType = entityType.ClrType;
+
+            if (typeof(BaseEntity).IsAssignableFrom(clrType) && clrType != typeof(BaseEntity))
+            {
+                modelBuilder.Entity(clrType)
+                    .Property(nameof(BaseEntity.Id))
+                    .ValueGeneratedOnAdd();
+            }
+        }
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
