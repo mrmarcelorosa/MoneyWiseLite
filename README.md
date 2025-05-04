@@ -33,6 +33,10 @@ This project follows **Clean Architecture** and is organized in the following la
   - Contains generic base controllers for reusable REST endpoints.
   - Uses Swagger for API documentation.
 
+- **Migrations**:
+  - dotnet ef migrations add NameMigration --project MoneyWiseLite.Infrastructure --startup-project MoneyWiseLite.API
+  - dotnet ef database update --project MoneyWiseLite.Infrastructure --startup-project MoneyWiseLite.API
+
 ### 📦 Entity Structure
 
 Each entity inherits from `BaseEntity`:
@@ -44,3 +48,4 @@ public abstract class BaseEntity
     public DateTime CreatedAt { get; set; }
     public DateTime LastUpdatedAt { get; set; }
 }
+
