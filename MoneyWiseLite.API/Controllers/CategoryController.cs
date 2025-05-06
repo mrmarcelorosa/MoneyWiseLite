@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MoneyWiseLite.Domain.Entities;
 using MoneyWiseLite.Domain.Interfaces;
 

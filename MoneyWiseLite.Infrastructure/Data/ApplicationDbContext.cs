@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Transaction> Transaction { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,10 +32,23 @@ public class ApplicationDbContext : DbContext
 
         // Configuring the Category entity
         modelBuilder.Entity<Category>()
-        .HasOne(c => c.User)
-        .WithMany() 
-        .HasForeignKey(c => c.UserId)
-        .OnDelete(DeleteBehavior.Cascade);
+            .HasOne(c => c.User)
+            .WithMany() 
+            .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Configuring the Transaction entity
+        modelBuilder.Entity<Transaction>()
+            .HasOne(t => t.Category)
+            .WithMany()
+            .HasForeignKey(t => t.CategoryId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Transaction>()
+            .HasOne(t => t.User)
+            .WithMany()
+            .HasForeignKey(t => t.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
