@@ -3,14 +3,9 @@ using MoneyWiseLite.Domain.Interfaces;
 
 namespace MoneyWiseLite.Application.Services
 {
-    public class UserService : GenericService<User>, IUserService
+    public class UserService(IUserRepository userRepository) : GenericService<User>(userRepository), IUserService
     {
-        private readonly IUserRepository _userRepository;
-
-        public UserService(IUserRepository userRepository) : base(userRepository)
-        {
-            _userRepository = userRepository;
-        }
+        private readonly IUserRepository _userRepository = userRepository;
 
         public Task<bool> CheckUserExistsAsync(string email)
         {

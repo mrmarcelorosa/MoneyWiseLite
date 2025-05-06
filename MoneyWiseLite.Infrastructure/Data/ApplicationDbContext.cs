@@ -1,5 +1,4 @@
-﻿using System.Transactions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MoneyWiseLite.Domain.Entities;
 
 namespace MoneyWiseLite.Infrastructure.Data;
@@ -11,8 +10,8 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    //public DbSet<Transaction> Transactions { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,6 +28,13 @@ public class ApplicationDbContext : DbContext
                     .ValueGeneratedOnAdd();
             }
         }
+
+        // Configuring the Category entity
+        modelBuilder.Entity<Category>()
+        .HasOne(c => c.User)
+        .WithMany() 
+        .HasForeignKey(c => c.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

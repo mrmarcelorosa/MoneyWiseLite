@@ -5,10 +5,6 @@ using MoneyWiseLite.Domain.Interfaces;
 namespace MoneyWiseLite.API.Controllers;
 
 [Route("api/[controller]")]
-public class UserController : GenericController<User>
+public class UserController(IUserService userService) : GenericController<User>(userService)
 {
-    
-    public UserController(IUserService userService) : base(userService)
-    {
-    }
 }
