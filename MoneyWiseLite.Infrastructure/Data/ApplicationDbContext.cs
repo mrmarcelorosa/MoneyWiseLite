@@ -56,7 +56,7 @@ public class ApplicationDbContext : DbContext
         var entries = ChangeTracker
             .Entries<BaseEntity>();
 
-        var now = DateTime.UtcNow;
+        var now = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
 
         foreach (var entry in entries)
         {
