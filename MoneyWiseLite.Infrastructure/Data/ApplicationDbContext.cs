@@ -13,6 +13,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Transaction> Transaction { get; set; }
+    public DbSet<Budget> Budgets { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -44,10 +45,18 @@ public class ApplicationDbContext : DbContext
             .HasForeignKey(t => t.CategoryId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        // Configuring the Transaction entity
         modelBuilder.Entity<Transaction>()
             .HasOne(t => t.User)
             .WithMany()
             .HasForeignKey(t => t.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Configuring the Budget entity
+        modelBuilder.Entity<Budget>()
+            .HasOne(c => c.User)
+            .WithMany()
+            .HasForeignKey(c => c.UserId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 
@@ -56,7 +65,7 @@ public class ApplicationDbContext : DbContext
         var entries = ChangeTracker
             .Entries<BaseEntity>();
 
-        var now = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+        var now = DateTime.UtcNow;
 
         foreach (var entry in entries)
         {
