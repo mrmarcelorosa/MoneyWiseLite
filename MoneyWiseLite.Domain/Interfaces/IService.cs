@@ -9,5 +9,6 @@ public interface IService<T> where T : BaseEntity
     Task<T> CreateAsync(T entity);
     Task UpdateAsync(T entity);
     Task DeleteAsync(int id);
+    Task<IEnumerable<T>> GetDeletedAsync();
 }
 

@@ -51,4 +51,11 @@ public abstract class GenericController<T> : ControllerBase where T : BaseEntity
         await _service.DeleteAsync(id);
         return NoContent();
     }
+
+    [HttpGet("deleted")]
+    public async Task<ActionResult<IEnumerable<T>>> GetDeleted()
+    {
+        var deletedEntities = await _service.GetDeletedAsync();
+        return Ok(deletedEntities);
+    }
 }

@@ -9,5 +9,6 @@ public interface IRepository<T> where T : BaseEntity
     Task<T> AddAsync(T entity);
     Task UpdateAsync(T entity);
     Task DeleteAsync(long id);
+    Task<IEnumerable<T>> GetDeletedAsync();
 }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using MoneyWiseLite.Domain.Entities;
 
 namespace MoneyWiseLite.Infrastructure.Data;
@@ -28,6 +29,14 @@ public class ApplicationDbContext : DbContext
                 modelBuilder.Entity(clrType)
                     .Property(nameof(BaseEntity.Id))
                     .ValueGeneratedOnAdd();
+
+                var parameter = Expression.Parameter(clrType, "e");
+                var deletedAtProp = Expression.Property(parameter, nameof(BaseEntity.DeletedAt));
+                var nullConstant = Expression.Constant(null, typeof(DateTime?));
+                var condition = Expression.Equal(deletedAtProp, nullConstant);
+                var lambda = Expression.Lambda(condition, parameter);
+
+                modelBuilder.Entity(clrType).HasQueryFilter(lambda);
             }
         }
 

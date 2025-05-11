@@ -18,7 +18,9 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     }
     public async Task<IEnumerable<T>> GetAllAsync()
     {
-        return await _dbSet.ToListAsync();
+        return await _dbSet
+            .Where(e => e.DeletedAt == null)
+            .ToListAsync();
     }
 
     public async Task<T?> GetByIdAsync(long id)
@@ -44,8 +46,17 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
         var entity = await GetByIdAsync(id);
         if (entity != null)
         {
-            _dbSet.Remove(entity);
+            entity.DeletedAt = DateTime.UtcNow;
+            _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task<IEnumerable<T>> GetDeletedAsync()
+    {
+        return await _dbSet
+            .IgnoreQueryFilters()
+            .Where(e => e.DeletedAt != null)
+            .ToListAsync();
     }
 }

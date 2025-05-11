@@ -36,4 +36,9 @@ public class GenericService<T> : IService<T> where T : BaseEntity
     {
         await _repository.DeleteAsync(id);
     }
+
+    public async Task<IEnumerable<T>> GetDeletedAsync()
+    {
+        return await _repository.GetDeletedAsync();
+    }
 }
