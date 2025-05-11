@@ -58,4 +58,19 @@ public abstract class GenericController<T> : ControllerBase where T : BaseEntity
         var deletedEntities = await _service.GetDeletedAsync();
         return Ok(deletedEntities);
     }
+
+    [HttpGet("paged")]
+    public async Task<ActionResult<IEnumerable<T>>> GetAllPaged(int pageNumber, int pageSize)
+    {
+        var pagedEntities = await _service.GetAllPagedAsync(pageNumber, pageSize);
+        return Ok(pagedEntities);
+    }
+
+    [HttpGet("deleted/paged")]
+    public async Task<ActionResult<IEnumerable<T>>> GetDeletedPaged(int pageNumber, int pageSize)
+    {
+        var pagedDeletedEntities = await _service.GetDeletedPagedAsync(pageNumber, pageSize);
+        return Ok(pagedDeletedEntities);
+    }
+
 }

@@ -10,5 +10,9 @@ public interface IRepository<T> where T : BaseEntity
     Task UpdateAsync(T entity);
     Task DeleteAsync(long id);
     Task<IEnumerable<T>> GetDeletedAsync();
+
+    Task <IEnumerable<T>> GetAllPagedAsync(int pageNumber, int pageSize);
+    Task<IEnumerable<T>> GetDeletedPagedAsync(int pageNumber, int pageSize);
+
 }
 

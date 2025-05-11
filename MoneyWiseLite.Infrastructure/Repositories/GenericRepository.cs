@@ -59,4 +59,23 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
             .Where(e => e.DeletedAt != null)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<T>> GetAllPagedAsync(int pageNumber, int pageSize)
+    {
+        return await _dbSet
+            .Where(e => e.DeletedAt == null)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<T>> GetDeletedPagedAsync(int pageNumber, int pageSize)
+    {
+        return await _dbSet
+            .IgnoreQueryFilters()
+            .Where(e => e.DeletedAt != null)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+    }
 }

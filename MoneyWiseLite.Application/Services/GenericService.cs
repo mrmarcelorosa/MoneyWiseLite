@@ -41,4 +41,14 @@ public class GenericService<T> : IService<T> where T : BaseEntity
     {
         return await _repository.GetDeletedAsync();
     }
+
+    public async Task<IEnumerable<T>> GetAllPagedAsync(int pageNumber, int pageSize)
+    {
+        return await _repository.GetAllPagedAsync(pageNumber, pageSize);
+    }
+
+    public async Task<IEnumerable<T>> GetDeletedPagedAsync(int pageNumber, int pageSize)
+    {
+        return await _repository.GetDeletedPagedAsync(pageNumber, pageSize);
+    }
 }
